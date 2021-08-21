@@ -4,29 +4,26 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import EnHome from "./views/home";
-import { typeOfFilters } from "./views/home/types";
+import { appRoutes } from "./routes";
 
 export default function App() {
+  const { notFound, routes } = appRoutes;
+
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={() => <Redirect to="/todos" />} />
-        <Route
-          path="/todos"
-          exact
-          component={() => <EnHome defaultFilter={typeOfFilters.ALL} />}
-        />
-        <Route
-          path="/ativos"
-          exact
-          component={() => <EnHome defaultFilter={typeOfFilters.ALL} />}
-        />
-        <Route
-          path="/completos"
-          exact
-          component={() => <EnHome defaultFilter={typeOfFilters.ALL} />}
-        />
+        {routes.map(({ initial, path, component }) =>
+          initial ? (
+            [
+              <Route path="/" exact component={() => <Redirect to={path} />} />,
+              <Route path={path} component={() => component} />,
+            ]
+          ) : (
+            <Route path={path} component={() => component} />
+          )
+        )}
+
+        <Route path="*" exact={true} component={() => notFound.component} />
       </Switch>
     </Router>
   );
