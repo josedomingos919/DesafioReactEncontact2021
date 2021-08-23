@@ -1,8 +1,13 @@
 import { FC } from "react";
-import { EnHomeType } from "./types";
+import EnHeader from "../../components/header";
+import { EnHomeProps } from "./types";
 
-const EnHome: FC<EnHomeType> = ({ defaultFilter }) => {
-  return <>Yeste</>;
+const EnHome: FC<EnHomeProps> = ({ defaultFilter }) => {
+  return (
+    <>
+      <EnHeader />
+    </>
+  );
 };
 
 export default EnHome;

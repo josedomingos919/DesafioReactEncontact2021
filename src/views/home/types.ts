@@ -7,6 +7,6 @@ export enum typeOfFilters {
 }
 
 /*Types*/
-export type EnHomeType = {
+export type EnHomeProps = {
   defaultFilter: typeOfFilters;
 };
