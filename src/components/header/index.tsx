@@ -11,6 +11,7 @@ import { bindActionCreators } from "redux";
 import { Dispatch } from "redux";
 import { changeMode } from "../../storage/reducers/list/actions";
 import { EnHeaderProps } from "./types";
+import { language } from "../../language";
 
 const EnHeader: FC<EnHeaderProps> = ({ mode, changeMode = () => {} }) => {
   return (
@@ -38,7 +39,7 @@ const EnHeader: FC<EnHeaderProps> = ({ mode, changeMode = () => {} }) => {
           </ButtomMode>
         </HeaderModeContainer>
 
-        <TitleView>Todos</TitleView>
+        <TitleView>{language.get("en", "ALL")}</TitleView>
         <SubInfoView>EnContact List@2021</SubInfoView>
       </HeaderConteiner>
     </>
