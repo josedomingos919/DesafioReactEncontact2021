@@ -6,13 +6,18 @@ import {
 } from "react-router-dom";
 import { appRoutes } from "./routes";
 import GlobalStyle from "./styles/global";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Dispatch } from "redux";
+import { AppProps } from "./types";
+import { FC } from "react";
 
-export default function App() {
+const App: FC<AppProps> = ({ mode }) => {
   const { notFound, routes } = appRoutes;
 
   return (
     <section>
-      <GlobalStyle appMode={true} />
+      <GlobalStyle appMode={mode} />
       <Router>
         <Switch>
           {routes.map(({ initial, path, component }) =>
@@ -35,4 +40,13 @@ export default function App() {
       </Router>
     </section>
   );
-}
+};
+
+const mapStateToProps = (store: any) => ({
+  mode: store.listState.mode,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators({}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -31,7 +31,7 @@ export const ButtomMode = styled.button`
   cursor: pointer;
   text-align: center;
   color: #b0b3b4;
-  background-color: #4d616a;
+  background-color: ${({ mode }) => getColor(mode).BUTTOM};
   max-width: 100px;
   width: 100%;
   margin-right: 15px;

@@ -18,6 +18,7 @@ const EnHeader: FC<EnHeaderProps> = ({ mode, changeMode = () => {} }) => {
       <HeaderConteiner mode={mode}>
         <HeaderModeContainer>
           <ButtomMode
+            mode={mode}
             active={mode}
             onClick={() => {
               changeMode(true);
@@ -27,6 +28,7 @@ const EnHeader: FC<EnHeaderProps> = ({ mode, changeMode = () => {} }) => {
           </ButtomMode>
 
           <ButtomMode
+            mode={mode}
             active={!mode}
             onClick={() => {
               changeMode(false);

@@ -9,4 +9,5 @@ export type ButtomModeProps = {
 
 export type propsButtomMode = {
   active: boolean;
+  mode: boolean;
 };
