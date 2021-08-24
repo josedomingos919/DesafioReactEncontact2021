@@ -12,8 +12,8 @@ import { Dispatch } from "redux";
 import { AppProps } from "./types";
 import { FC } from "react";
 
-const App: FC<AppProps> = ({ mode }) => {
-  const { notFound, routes } = appRoutes;
+const App: FC<AppProps> = ({ mode, lang }) => {
+  const { notFound, routes } = appRoutes(lang);
 
   return (
     <section>
@@ -28,14 +28,18 @@ const App: FC<AppProps> = ({ mode }) => {
                   exact
                   component={() => <Redirect to={path} />}
                 />,
-                <Route path={path} component={() => component} />,
+                <Route path={path} component={() => <>{component}</>} />,
               ]
             ) : (
-              <Route path={path} component={() => component} />
+              <Route path={path} component={() => <> {component}</>} />
             )
           )}
 
-          <Route path="*" exact={true} component={() => notFound.component} />
+          <Route
+            path="*"
+            exact={true}
+            component={() => <> {notFound.component}</>}
+          />
         </Switch>
       </Router>
     </section>
@@ -44,6 +48,7 @@ const App: FC<AppProps> = ({ mode }) => {
 
 const mapStateToProps = (store: any) => ({
   mode: store.listState.mode,
+  lang: store.listState.lang,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

@@ -14,6 +14,10 @@ export const HeaderConteiner = styled.section<HeaderConteinerProps>`
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  @media (max-width: 558px) {
+    height: 316px;
+  }
 `;
 
 export const HeaderModeContainer = styled.section`
