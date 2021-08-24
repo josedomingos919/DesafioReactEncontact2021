@@ -66,4 +66,35 @@ export const SubInfoView = styled.label`
   font-size: 12px;
   letter-spacing: 2px;
 `;
-//375
+
+type SelectContainerProps = {
+  mode: boolean;
+};
+
+export const SelectContainer = styled.div`
+  ${(e: SelectContainerProps) => ``}
+
+  @media (max-width: 557px) {
+    position: relative;
+  }
+
+  position: absolute;
+  padding-top: 20px;
+  display: "flex";
+  right: 0;
+  padding-right: 20vw;
+
+  select > option {
+    color: white;
+    cursor: pointer;
+    background: ${({ mode }) => getColor(mode).HEADER_COLOR};
+  }
+
+  select {
+    background: transparent;
+    color: white;
+    border: 4px solid #ffffff7a;
+    background: transparent;
+    padding: 10px;
+  }
+`;

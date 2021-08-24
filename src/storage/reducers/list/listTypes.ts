@@ -1,6 +1,7 @@
 export enum listTypes {
   ADD_ITEM = "ADD_ITEM",
   CHANGE_MODE = "CHANGE_MODE",
+  GET_TEXT = "GET_TEXT",
 }
 
 export type actionProps = {
@@ -17,4 +18,5 @@ export type listItemTypes = {
 export type initialStateType = {
   list: Array<listItemTypes>;
   mode: boolean;
+  lang: {};
 };

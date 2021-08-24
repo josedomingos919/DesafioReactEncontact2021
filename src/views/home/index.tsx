@@ -5,7 +5,7 @@ import { EnHomeProps } from "./types";
 const EnHome: FC<EnHomeProps> = ({ defaultFilter }) => {
   return (
     <>
-      <EnHeader />
+      <EnHeader defaultFilter={defaultFilter} />
     </>
   );
 };

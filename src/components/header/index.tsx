@@ -3,17 +3,29 @@ import {
   ButtomMode,
   HeaderConteiner,
   HeaderModeContainer,
+  SelectContainer,
   SubInfoView,
   TitleView,
 } from "./styles";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Dispatch } from "redux";
-import { changeMode } from "../../storage/reducers/list/actions";
+import {
+  changeMode,
+  changeLanguage,
+} from "../../storage/reducers/list/actions";
 import { EnHeaderProps } from "./types";
-import { language } from "../../language";
+import { languagesPack } from "../../language";
 
-const EnHeader: FC<EnHeaderProps> = ({ mode, changeMode = () => {} }) => {
+const EnHeader: FC<EnHeaderProps> = ({
+  lang,
+  mode,
+  changeMode = () => {},
+  changeLanguage = () => {},
+  defaultFilter,
+}) => {
+  const { DARK, LIGHT, LIST } = lang;
+
   return (
     <>
       <HeaderConteiner mode={mode}>
@@ -25,7 +37,7 @@ const EnHeader: FC<EnHeaderProps> = ({ mode, changeMode = () => {} }) => {
               changeMode(true);
             }}
           >
-            <label>Light</label>
+            <label>{LIGHT}</label>
           </ButtomMode>
 
           <ButtomMode
@@ -35,22 +47,36 @@ const EnHeader: FC<EnHeaderProps> = ({ mode, changeMode = () => {} }) => {
               changeMode(false);
             }}
           >
-            <label>Dark</label>
+            <label>{DARK}</label>
           </ButtomMode>
         </HeaderModeContainer>
 
-        <TitleView>{language.get("en", "ALL")}</TitleView>
-        <SubInfoView>EnContact List@2021</SubInfoView>
+        <TitleView>{lang[defaultFilter]}</TitleView>
+        <SubInfoView>EnContact {LIST}@2021</SubInfoView>
+
+        <SelectContainer mode={mode}>
+          <select
+            defaultValue="pt"
+            onChange={(e) => {
+              changeLanguage(e.target.value);
+            }}
+          >
+            {languagesPack.map(({ label, value }) => (
+              <option value={value}>{label}</option>
+            ))}
+          </select>
+        </SelectContainer>
       </HeaderConteiner>
     </>
   );
 };
 
 const mapStateToProps = (store: any) => ({
+  lang: store.listState.lang,
   mode: store.listState.mode,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators({ changeMode }, dispatch);
+  bindActionCreators({ changeMode, changeLanguage }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(EnHeader);

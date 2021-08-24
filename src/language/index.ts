@@ -6,6 +6,15 @@ const languages: any = {
   ...enLanguage,
 };
 
-export const language = {
-  get: (type: string, props: string) => languages[type][props],
-};
+export const languagesPack = [
+  {
+    label: "En",
+    value: "en",
+  },
+  {
+    label: "Pt",
+    value: "pt",
+  },
+];
+
+export const language = languages;
