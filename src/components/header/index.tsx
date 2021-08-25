@@ -28,10 +28,11 @@ const EnHeader: FC<EnHeaderProps> = ({
 
   return (
     <>
-      <HeaderConteiner mode={mode}>
+      <HeaderConteiner appMode={mode}>
         <HeaderModeContainer>
           <ButtomMode
-            mode={mode}
+            key={1}
+            buttomMode={mode}
             active={mode}
             onClick={() => {
               changeMode(true);
@@ -41,7 +42,8 @@ const EnHeader: FC<EnHeaderProps> = ({
           </ButtomMode>
 
           <ButtomMode
-            mode={mode}
+            key={2}
+            buttomMode={mode}
             active={!mode}
             onClick={() => {
               changeMode(false);
@@ -54,15 +56,16 @@ const EnHeader: FC<EnHeaderProps> = ({
         <TitleView>{lang[defaultFilter]}</TitleView>
         <SubInfoView>EnContact {LIST}@2021</SubInfoView>
 
-        <SelectContainer mode={mode}>
+        <SelectContainer selectContainerMode={mode}>
           <select
-            defaultValue="pt"
             onChange={(e) => {
               changeLanguage(e.target.value);
             }}
           >
-            {languagesPack.map(({ label, value }) => (
-              <option value={value}>{label}</option>
+            {languagesPack.map(({ label, value }, i) => (
+              <option key={i} value={value}>
+                {label}
+              </option>
             ))}
           </select>
         </SelectContainer>

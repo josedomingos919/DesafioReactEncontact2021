@@ -3,13 +3,13 @@ import { getColor } from "../../styles/util";
 import { propsButtomMode } from "./types";
 
 type HeaderConteinerProps = {
-  mode: boolean;
+  appMode: boolean;
 };
 
 export const HeaderConteiner = styled.section<HeaderConteinerProps>`
   height: 250px;
   width: 100%;
-  background-color: ${(e) => getColor(e.mode).HEADER_COLOR};
+  background-color: ${(e) => getColor(e.appMode).HEADER_COLOR};
   padding: 0px 20vw;
   display: flex;
   justify-content: center;
@@ -35,7 +35,7 @@ export const ButtomMode = styled.button`
   cursor: pointer;
   text-align: center;
   color: #b0b3b4;
-  background-color: ${({ mode }) => getColor(mode).BUTTOM};
+  background-color: ${({ buttomMode }) => getColor(buttomMode).BUTTOM};
   max-width: 100px;
   width: 100%;
   margin-right: 15px;
@@ -72,7 +72,7 @@ export const SubInfoView = styled.label`
 `;
 
 type SelectContainerProps = {
-  mode: boolean;
+  selectContainerMode: boolean;
 };
 
 export const SelectContainer = styled.div`
@@ -91,7 +91,8 @@ export const SelectContainer = styled.div`
   select > option {
     color: white;
     cursor: pointer;
-    background: ${({ mode }) => getColor(mode).HEADER_COLOR};
+    background: ${({ selectContainerMode }) =>
+      getColor(selectContainerMode).HEADER_COLOR};
   }
 
   select {

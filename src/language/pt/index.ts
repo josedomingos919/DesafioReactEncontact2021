@@ -8,5 +8,8 @@ export const ptLanguage = {
     LIGHT: "Claro",
     DARK: "Escuro",
     CLEAN: "Limpra completos",
+    EMPTY_VALUE: "Não pode adicionar valor vazio!",
+    EDIT_SUCESS: "Editado com sucesso!",
+    ADDED_SUCESS: "Adicionado com sucesso!",
   },
 };

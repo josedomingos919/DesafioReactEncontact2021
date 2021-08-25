@@ -15,6 +15,12 @@ export const listReducer = (state = initialState, action: actionProps) => {
         lang: language[action.value],
       };
 
+    case listTypes.UPDATE:
+      return {
+        ...state,
+        list: action.value,
+      };
+
     case listTypes.CHANGE_MODE:
       return {
         ...state,
@@ -22,12 +28,9 @@ export const listReducer = (state = initialState, action: actionProps) => {
       };
 
     case listTypes.ADD_ITEM:
-      let { list } = state;
-      list.push(action.value);
-
       return {
         ...state,
-        list,
+        list: [...state.list, ...action.value],
       };
     default:
       return state;

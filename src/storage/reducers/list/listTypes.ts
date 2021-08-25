@@ -2,6 +2,7 @@ export enum listTypes {
   ADD_ITEM = "ADD_ITEM",
   CHANGE_MODE = "CHANGE_MODE",
   GET_TEXT = "GET_TEXT",
+  UPDATE = "UPDATE",
 }
 
 export type actionProps = {

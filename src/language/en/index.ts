@@ -8,5 +8,8 @@ export const enLanguage = {
     ACTIVE: "Active",
     COMPLETED: "Completed",
     CLEAN: "Clear completed",
+    EDIT_SUCESS: "Successfully edited",
+    ADDED_SUCESS: "Added successfully!",
+    EMPTY_VALUE: "Cannot add empty value!",
   },
 };

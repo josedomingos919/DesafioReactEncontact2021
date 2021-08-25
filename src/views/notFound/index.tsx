@@ -1,7 +1,8 @@
 import { FC } from "react";
+import { ContainerNotFound } from "./styles";
 
 const EnNotFound: FC = () => {
-  return <>Página não encontarda!</>;
+  return <ContainerNotFound>Página não encontarda!</ContainerNotFound>;
 };
 
 export default EnNotFound;
